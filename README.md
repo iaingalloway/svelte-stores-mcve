@@ -33,7 +33,7 @@ And run it locally with:
 docker run --rm -it -p 5001:5001 --env-file .env.runtime --name svelte-stores-mcve-local svelte-stores-mcve:local
 ```
 
-Notice that the static message isn't set when the application is run using the docker image. This is because the placeholder value in .env is baked into the `$env/static/public` store at build time, and cannot be changed at runtime. If we don't want to ship this value with the container, we must either use `$env/dynamic/public` or we must defer our build to runtime.
+Notice that the static message isn't set when the application is run using the docker image. This is because the empty placeholder value in .env is baked into the `$env/static/public` store at build time, and cannot be changed at runtime. If we don't want to ship this value with the container, we must either use `$env/dynamic/public` or we must defer our build to runtime.
 
 Baking these values into the container is not ideal as it means building a different container image for each environment. [The documentation advises against using the dynamic store where possible.](https://kit.svelte.dev/docs/modules#$env-dynamic-public) Deferring the build until runtime is not ideal, because it means the container image is much larger, much more complicated, and has a much larger attack surface.
 

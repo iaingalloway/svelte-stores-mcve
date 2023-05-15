@@ -5,13 +5,13 @@
 
 <h1>Svelte stores MCVE</h1>
 <ul>
-	<li>Static message:{PUBLIC_STATIC_MESSAGE}</li>
-	<li>Dynamic message:{env.PUBLIC_DYNAMIC_MESSAGE}</li>
+	<li>Static message: {PUBLIC_STATIC_MESSAGE}</li>
+	<li>Dynamic message: {env.PUBLIC_DYNAMIC_MESSAGE}</li>
 </ul>
 
 <p>
 	Notice that the static message isn't set when the application is run using the docker image. This
-	is because the placeholder value in .env is baked into the
+	is because the empty placeholder value in .env is baked into the
 	<code>$env/static/public</code> store at build time, and cannot be changed at runtime. If we don't
 	want to ship this value with the container, we must either use
 	<code>$env/dynamic/public</code> or we must defer our build to runtime.
